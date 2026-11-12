@@ -1,0 +1,499 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#17170f">
+<title>NatureGold | Pure Natural Honey</title>
+<meta name="description" content="Discover NatureGold pure natural honey. Order premium quality honey online in Pakistan with convenient payment options and delivery.">
+
+<style>
+:root {
+  --gold:#d5aa45;
+  --dark:#17170f;
+  --cream:#faf7ef;
+  --white:#fff;
+  --muted:#777568;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+ font-family:Arial,sans-serif;
+ background:var(--cream);
+ color:var(--dark);
+ line-height:1.6;
+}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+a{text-decoration:none;color:inherit}
+header{
+ background:#17170f;
+ color:white;
+ padding:16px 6%;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ position:sticky;top:0;z-index:10;
+}
+.logo{font-size:25px;font-weight:800;color:var(--gold)}
+.logo span{color:white}
+nav{display:flex;gap:25px;align-items:center}
+nav a{font-size:14px;color:#eee}
+.cart-btn{
+ background:var(--gold);border:0;
+ padding:10px 17px;border-radius:25px;
+ font-weight:bold;
+}
+.hero{
+ min-height:570px;
+ display:flex;align-items:center;
+ padding:65px 8%;
+ background:linear-gradient(90deg,rgba(15,15,9,.9),rgba(15,15,9,.3)),
+ url('https://images.unsplash.com/photo-1587049352851-8d4e89133924?auto=format&fit=crop&w=1800&q=85') center/cover;
+ color:white;
+}
+.hero-content{max-width:570px}
+.tag{color:var(--gold);letter-spacing:4px;font-size:13px;font-weight:bold}
+.hero h1{font-size:clamp(42px,7vw,72px);line-height:1.1;margin:18px 0}
+.hero h1 span{color:var(--gold)}
+.hero p{color:#eee;max-width:470px;margin-bottom:28px}
+.primary-btn{
+ display:inline-block;background:var(--gold);
+ color:#17170f;padding:14px 25px;
+ border-radius:5px;font-weight:bold;border:0;
+}
+section{padding:75px 7%}
+.section-title{text-align:center;margin-bottom:38px}
+.section-title small{color:#a47c23;font-weight:bold;letter-spacing:3px}
+.section-title h2{font-size:36px;margin-top:8px}
+.section-title p{color:var(--muted);margin-top:8px}
+.features{
+ display:grid;grid-template-columns:repeat(3,1fr);
+ gap:20px;text-align:center;
+}
+.feature{padding:25px 15px}
+.feature .symbol{font-size:35px}
+.feature h3{margin:10px 0}
+.feature p{font-size:14px;color:var(--muted)}
+.products{background:#fff}
+.product-grid{
+ display:grid;grid-template-columns:repeat(3,1fr);gap:25px;
+}
+.product-card{
+ background:var(--cream);border-radius:12px;
+ overflow:hidden;border:1px solid #eee;
+ transition:.25s;
+}
+.product-card:hover{transform:translateY(-5px)}
+.product-card img{width:100%;height:240px;object-fit:cover}
+.product-info{padding:20px}
+.product-info h3{font-size:20px}
+.product-info p{color:var(--muted);font-size:14px;margin:8px 0}
+.price{font-size:21px;color:#98701e;font-weight:bold;margin:12px 0}
+.product-info button{width:100%}
+.about{
+ display:grid;grid-template-columns:1fr 1fr;
+ gap:45px;align-items:center;
+}
+.about img{width:100%;height:380px;object-fit:cover;border-radius:12px}
+.about h2{font-size:36px;margin:12px 0}
+.about p{color:var(--muted);margin-bottom:15px}
+.about ul{padding-left:20px}
+.about li{margin:8px 0}
+.banner{
+ background:#1c1b12;color:white;text-align:center;
+ padding:60px 20px;
+}
+.banner h2{font-size:35px;color:var(--gold)}
+.banner p{margin:10px 0 22px}
+.faq{max-width:800px;margin:auto}
+.faq details{padding:17px;border-bottom:1px solid #ddd}
+.faq summary{font-weight:bold;cursor:pointer}
+.faq p{color:var(--muted);padding-top:10px}
+footer{background:#17170f;color:white;padding:45px 7%}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}
+footer h3{color:var(--gold);margin-bottom:12px}
+footer p,footer a{color:#ccc;font-size:14px}
+footer a{display:block;margin:7px 0}
+.copyright{text-align:center;border-top:1px solid #444;margin-top:30px;padding-top:20px;color:#aaa;font-size:13px}
+.cart-panel{
+ position:fixed;right:-420px;top:0;width:min(400px,100%);
+ height:100vh;background:white;z-index:30;
+ padding:25px;transition:.3s;overflow:auto;
+ box-shadow:-5px 0 25px #0002;
+}
+.cart-panel.open{right:0}
+.cart-header{display:flex;justify-content:space-between;margin-bottom:20px}
+.close-btn{border:0;background:none;font-size:26px}
+.cart-item{padding:14px 0;border-bottom:1px solid #eee}
+.cart-item button{border:0;background:none;color:#a33}
+.cart-total{font-size:21px;font-weight:bold;margin:22px 0}
+.overlay{
+ display:none;position:fixed;inset:0;background:#0007;z-index:20
+}
+.overlay.show{display:block}
+.modal{
+ display:none;position:fixed;inset:0;z-index:40;
+ background:#0009;align-items:center;justify-content:center;padding:15px;
+}
+.modal.show{display:flex}
+.modal-box{
+ background:white;width:min(500px,100%);
+ max-height:90vh;overflow:auto;padding:25px;border-radius:12px;
+}
+.modal-box h2{margin-bottom:15px}
+.field{margin:12px 0}
+.field label{display:block;font-weight:bold;font-size:14px;margin-bottom:5px}
+.field input,.field select,.field textarea{
+ width:100%;padding:12px;border:1px solid #ddd;border-radius:5px;
+ background:white;
+}
+.field textarea{resize:vertical}
+.checkout-btn{
+ width:100%;padding:14px;border:0;border-radius:5px;
+ background:var(--gold);font-weight:bold;
+}
+.note{font-size:12px;color:var(--muted);margin-top:10px}
+@media(max-width:750px){
+ nav{gap:10px}
+ nav a{display:none}
+ .hero{min-height:500px;padding:55px 7%}
+ .features{grid-template-columns:1fr}
+ .product-grid{grid-template-columns:1fr 1fr;gap:12px}
+ .product-card img{height:170px}
+ .product-info{padding:13px}
+ .product-info h3{font-size:16px}
+ .about{grid-template-columns:1fr}
+ .about img{height:260px}
+ .footer-grid{grid-template-columns:1fr}
+ section{padding:55px 5%}
+}
+@media(max-width:400px){
+ .product-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+ <a href="#" class="logo">Nature<span>Gold</span></a>
+ <nav>
+  <a href="#home">Home</a>
+  <a href="#products">Products</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+  <button class="cart-btn" onclick="openCart()">Cart (<span id="cartCount">0</span>)</button>
+ </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+ <div class="hero-content">
+  <div class="tag">PURE • NATURAL • PREMIUM</div>
+  <h1>Nature's Sweetness, <span>In Every Drop.</span></h1>
+  <p>Discover the goodness of natural honey with NatureGold. Bringing the sweetness of nature straight to your home.</p>
+  <a href="#products" class="primary-btn">Explore Products →</a>
+ </div>
+</section>
+
+<section>
+ <div class="section-title">
+  <small>WHY NATUREGOLD</small>
+  <h2>Nature You Can Trust</h2>
+  <p>Our commitment is to quality and customer satisfaction.</p>
+ </div>
+ <div class="features">
+  <div class="feature">
+   <div class="symbol">🍯</div>
+   <h3>Natural Goodness</h3>
+   <p>Enjoy the taste of honey inspired by nature.</p>
+  </div>
+  <div class="feature">
+   <div class="symbol">📦</div>
+   <h3>Careful Packaging</h3>
+   <p>Products prepared with care for delivery.</p>
+  </div>
+  <div class="feature">
+   <div class="symbol">🚚</div>
+   <h3>Home Delivery</h3>
+   <p>Convenient ordering from your home.</p>
+  </div>
+ </div>
+</section>
+
+<section class="products" id="products">
+ <div class="section-title">
+  <small>OUR COLLECTION</small>
+  <h2>Explore Our Products</h2>
+  <p>Choose your favourite NatureGold honey.</p>
+ </div>
+ <div class="product-grid" id="productGrid"></div>
+</section>
+
+<section id="about">
+ <div class="about">
+  <img src="https://images.unsplash.com/photo-1471943311424-646960669fbc?auto=format&fit=crop&w=900&q=85" alt="Honey jar">
+  <div>
+   <div class="tag">OUR STORY</div>
+   <h2>A Taste of Pure Nature</h2>
+   <p>Welcome to NatureGold, your destination for natural honey. We believe in bringing quality products and a simple, convenient shopping experience to every customer.</p>
+   <ul>
+    <li>Quality-focused products</li>
+    <li>Easy online ordering</li>
+    <li>Customer-friendly service</li>
+   </ul>
+  </div>
+ </div>
+</section>
+
+<div class="banner">
+ <h2>Bring Nature Home</h2>
+ <p>Explore our collection and place your order today.</p>
+ <a href="#products" class="primary-btn">Shop Now</a>
+</div>
+
+<section>
+ <div class="section-title">
+  <small>HELP CENTER</small>
+  <h2>Frequently Asked Questions</h2>
+ </div>
+ <div class="faq">
+  <details>
+   <summary>Do you offer Cash on Delivery?</summary>
+   <p>Yes, you can select Cash on Delivery when placing your order. Availability will be confirmed with you.</p>
+  </details>
+  <details>
+   <summary>Can I pay through Easypaisa?</summary>
+   <p>Yes, Easypaisa payment is available. Payment details will be shared during order confirmation.</p>
+  </details>
+  <details>
+   <summary>How can I place an order?</summary>
+   <p>Add your product to the cart, fill in your details and send your order through WhatsApp.</p>
+  </details>
+ </div>
+</section>
+</main>
+
+<footer id="contact">
+ <div class="footer-grid">
+  <div>
+   <h3 class="logo">NatureGold</h3>
+   <p>Pure natural goodness delivered to your doorstep.</p>
+  </div>
+  <div>
+   <h3>Quick Links</h3>
+   <a href="#home">Home</a>
+   <a href="#products">Products</a>
+   <a href="#about">About Us</a>
+  </div>
+  <div>
+   <h3>Contact</h3>
+   <p>Pakistan</p>
+   <p>WhatsApp: Contact us to order</p>
+  </div>
+ </div>
+ <div class="copyright">© 2026 NatureGold. All Rights Reserved.</div>
+</footer>
+
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+
+<div class="cart-panel" id="cartPanel">
+ <div class="cart-header">
+  <h2>Your Cart</h2>
+  <button class="close-btn" onclick="closeCart()">×</button>
+ </div>
+ <div id="cartItems"></div>
+ <div class="cart-total">Total: Rs. <span id="cartTotal">0</span></div>
+ <button class="checkout-btn" onclick="openCheckout()">Proceed to Checkout</button>
+</div>
+
+<div class="modal" id="checkoutModal">
+ <div class="modal-box">
+  <div class="cart-header">
+   <h2>Complete Your Order</h2>
+   <button class="close-btn" onclick="closeCheckout()">×</button>
+  </div>
+  <form id="orderForm">
+   <div class="field">
+    <label>Full Name</label>
+    <input id="customerName" required placeholder="Your name">
+   </div>
+   <div class="field">
+    <label>Phone Number</label>
+    <input id="customerPhone" type="tel" required placeholder="03XXXXXXXXX">
+   </div>
+   <div class="field">
+    <label>Complete Delivery Address</label>
+    <textarea id="customerAddress" required rows="3" placeholder="House, street, city"></textarea>
+   </div>
+   <div class="field">
+    <label>Payment Method</label>
+    <select id="paymentMethod" required>
+     <option value="">Select payment method</option>
+     <option>Cash on Delivery</option>
+     <option>Easypaisa</option>
+     <option>Bank Transfer</option>
+    </select>
+   </div>
+   <div class="field">
+    <label>Additional Note (Optional)</label>
+    <textarea id="customerNote" rows="2"></textarea>
+   </div>
+   <button type="submit" class="checkout-btn">Send Order on WhatsApp</button>
+   <p class="note">Your order will be sent to our WhatsApp for confirmation. Payment is not processed automatically by this website.</p>
+  </form>
+ </div>
+</div>
+
+<script>
+// ======================================
+// NATUREGOLD WEBSITE SETTINGS
+// EDIT THESE DETAILS BEFORE LAUNCHING
+// ======================================
+
+// Replace with your business WhatsApp number.
+// Pakistan format: 92 followed by number, without +.
+const WHATSAPP_NUMBER = "923XXXXXXXXX";
+
+// EDIT YOUR PRODUCTS HERE.
+// Set your real product pictures, names and prices.
+// Image can be a GitHub image path, e.g. images/honey.jpg
+
+const products = [
+ {
+  id:1,
+  name:"Pure Natural Honey",
+  price:0,
+  weight:"Your jar size",
+  image:"https://images.unsplash.com/photo-1587049352851-8d4e89133924?auto=format&fit=crop&w=700&q=80",
+  description:"Add your product description here."
+ },
+ {
+  id:2,
+  name:"Premium Honey",
+  price:0,
+  weight:"Your jar size",
+  image:"https://images.unsplash.com/photo-1471943311424-646960669fbc?auto=format&fit=crop&w=700&q=80",
+  description:"Add your product description here."
+ },
+ {
+  id:3,
+  name:"Family Honey Pack",
+  price:0,
+  weight:"Your jar size",
+  image:"https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?auto=format&fit=crop&w=700&q=80",
+  description:"Add your product description here."
+ }
+];
+
+let cart = [];
+
+function renderProducts(){
+ const grid=document.getElementById("productGrid");
+ grid.innerHTML=products.map(p=>`
+  <div class="product-card">
+   <img src="${p.image}" alt="${p.name}" loading="lazy">
+   <div class="product-info">
+    <h3>${p.name}</h3>
+    <p>${p.description}</p>
+    <p>${p.weight}</p>
+    <div class="price">${p.price > 0 ? "Rs. "+p.price : "Price to be updated"}</div>
+    <button class="primary-btn" style="width:100%"
+     onclick="addToCart(${p.id})" ${p.price <= 0 ? "disabled" : ""}>
+     ${p.price > 0 ? "Add to Cart" : "Coming Soon"}
+    </button>
+   </div>
+  </div>
+ `).join("");
+}
+
+function addToCart(id){
+ const p=products.find(x=>x.id===id);
+ if(!p || p.price<=0)return;
+ const existing=cart.find(x=>x.id===id);
+ if(existing)existing.qty++;
+ else cart.push({...p,qty:1});
+ updateCart();
+}
+
+function updateCart(){
+ document.getElementById("cartCount").textContent=
+ cart.reduce((s,p)=>s+p.qty,0);
+
+ document.getElementById("cartItems").innerHTML=
+ cart.length ? cart.map(p=>`
+ <div class="cart-item">
+  <strong>${p.name}</strong>
+  <p>Rs. ${p.price} × ${p.qty}</p>
+  <button onclick="removeItem(${p.id})">Remove</button>
+ </div>`).join("") : "<p>Your cart is empty.</p>";
+
+ document.getElementById("cartTotal").textContent=
+ cart.reduce((s,p)=>s+p.price*p.qty,0);
+}
+
+function removeItem(id){
+ cart=cart.filter(p=>p.id!==id);
+ updateCart();
+}
+
+function openCart(){
+ document.getElementById("cartPanel").classList.add("open");
+ document.getElementById("overlay").classList.add("show");
+}
+function closeCart(){
+ document.getElementById("cartPanel").classList.remove("open");
+ document.getElementById("overlay").classList.remove("show");
+}
+function openCheckout(){
+ if(!cart.length){
+  alert("Please add a product to your cart first.");
+  return;
+ }
+ closeCart();
+ document.getElementById("checkoutModal").classList.add("show");
+}
+function closeCheckout(){
+ document.getElementById("checkoutModal").classList.remove("show");
+}
+
+document.getElementById("orderForm").addEventListener("submit",function(e){
+ e.preventDefault();
+
+ if(WHATSAPP_NUMBER==="923XXXXXXXXX"){
+  alert("Please set your business WhatsApp number in the website code first.");
+  return;
+ }
+
+ const name=document.getElementById("customerName").value.trim();
+ const phone=document.getElementById("customerPhone").value.trim();
+ const address=document.getElementById("customerAddress").value.trim();
+ const payment=document.getElementById("paymentMethod").value;
+ const note=document.getElementById("customerNote").value.trim();
+
+ const items=cart.map(p=>
+ `${p.name} x ${p.qty} = Rs. ${p.price*p.qty}`
+ ).join("\n");
+
+ const total=cart.reduce((s,p)=>s+p.price*p.qty,0);
+
+ const message=
+ `NEW NATUREGOLD ORDER\n\n`+
+ `Name: ${name}\nPhone: ${phone}\nAddress: ${address}\n\n`+
+ `Products:\n${items}\n\nTotal: Rs. ${total}\n`+
+ `Payment: ${payment}\nNote: ${note}`;
+
+ const url="https://wa.me/"+WHATSAPP_NUMBER+
+ "?text="+encodeURIComponent(message);
+
+ window.open(url,"_blank");
+});
+
+renderProducts();
+updateCart();
+</script>
+
+</body>
+</html>
